@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>가위 바위 보</title>
+  <title>색이 다른 네모 찾기</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <!-- 우진 fontawesome key -->
+  <script src="https://kit.fontawesome.com/2230e227bb.js" crossorigin="anonymous"></script>
 </head>
-<body>
+
+<body onload=init()>
   <header></header>
   <main>
     <div class="wrap">
-      <p>색이 다른 네모 찾기</p>
-      <div class="display">
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
+      <p class="title">색이 다른 네모 찾기</p>
+      <div class="info">
+        <div class="timer">15</div>
+        <div class="info-right-wrap">
+          <div class="heart-wrap">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+          </div>
+          <div class="stage-box">
+            stage : 1
+          </div>
         </div>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div></div>
       </div>
+      <div class="display">
+      </div>
+      <div class="result-box"></div>
     </div>
   </main>
   <footer></footer>
   <script src="script.js"></script>
 </body>
+
 </html>
