@@ -1,3 +1,33 @@
+.start {
+  position: absolute;
+  top: 40%;
+  width: 200px;
+  height: 200px;
+  background-color: rgb(64, 70, 109);
+  border-radius: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s box-shadow;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(167, 167, 167);
+}
+
+.start:hover {
+  box-shadow: inset 0px 0px 30px rgb(26, 26, 26);
+}
+
+.cover {
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 55vh;
+  width: 55vh;
+  z-index: -10;
+}
+
 .wrap {
   height: 100vh;
   display: flex;
@@ -64,14 +94,33 @@
 }
 
 .result-box {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   width: 60vh;
-  height: 50px;
+  height: 120px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .result-text {
-  margin-top: 20px;
   font-weight: 700;
+}
+
+.result-box button {
+  background-color: rgb(88, 95, 150);
+  cursor: pointer;
+  width: 120px;
+  height: 40px;
+  color: rgb(167, 167, 167);
+  font-weight: 700;
+  border-radius: 10px;
+  transition: 0.3s all;
+}
+
+.result-box button:hover {
+  background-color: rgb(167, 167, 167);
+  color: rgb(88, 95, 150);
 }
