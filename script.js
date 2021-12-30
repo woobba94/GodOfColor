@@ -159,9 +159,9 @@ function result() {
   if (stage >= levelUpCount * 15) result = '내 사이트를 해킹하지 마십시오.';
   else if (stage >= levelUpCount * 11) result = '당신은 혹시.. 신입니까?';
   else if (stage >= levelUpCount * 10) result = '당신의 감각은 인류의 자랑거리입니다.';
-  else if (stage >= levelUpCount * 9) result = '당신의 어쩌면.. 맹금류입니다.';
+  else if (stage >= levelUpCount * 9) result = '당신의 능력은 연구대상입니다.';
   else if (stage >= levelUpCount * 8) result = '당신의 야생동물적인 감각을 가지고 있습니다.';
-  else if (stage >= levelUpCount * 5) result = '당신의 컬러감각은 미대생 수준입니다.';
+  else if (stage >= levelUpCount * 6) result = '당신의 컬러감각은 미대생 수준입니다.';
   else if (stage >= levelUpCount * 2) result = '당신의 컬러감각은 일반적인 수준입니다.';
   else if (stage >= levelUpCount) result = '당신은 초보수준 컬러감각을 가지고 있습니다.';
   else result = '음.. 조금만 제대로 플레이 해보시겠습니까?';
