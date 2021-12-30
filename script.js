@@ -1,5 +1,6 @@
 const cover = document.querySelector('.cover');
 const startBtn = document.querySelector('.start');
+const startWrap = document.querySelector('.start-wrap');
 startBtn.addEventListener('click', init);
 
 const display = document.querySelector('.display');
@@ -7,14 +8,15 @@ const heartList = document.querySelector('.heart-wrap');
 const stageBox = document.querySelector('.stage-box');
 const resultBox = document.querySelector('.result-box');
 
-const MAX_TIME = 15; // 초단위
+// 레벨이 올라가는 스테이지 단위
+const levelUpCount = 7;
+const MAX_TIME = 10; // 초단위
 const timer = document.querySelector('.timer');
 let interval;
 
 let TIME = MAX_TIME;
 let stage = 1;
 let level = 1;
-let successCount = 0;
 let failCount = 0;
 let colorPoint = 0;
 let baseColor = '';
@@ -68,7 +70,7 @@ function next() {
 }
 
 function init() {
-  startBtn.remove();
+  startWrap.remove();
   start();
 }
 
@@ -80,7 +82,7 @@ function clearDisplay() {
 
 function setBaseColor() {
   colorPoint = ~~(360 * Math.random());
-  baseColor = `hsla(${colorPoint},70%,70%,0.8)`;
+  baseColor = `hsla(${colorPoint},100%,70%,0.4)`;
 }
 
 function setTarget() {
@@ -89,10 +91,10 @@ function setTarget() {
   targetIndex.y = Math.floor(Math.random() * (level + 1));
   // 타겟 컬러 설정
   // 가중치 k 에 따라 baseColor 와의 차이 조절
-  let k = (100 + level * 10) / level;
+  let k = (200 / level) * (1 - level / 20);
   if (colorPoint - k < 0) colorPoint += k;
   else colorPoint -= k;
-  targetColor = `hsla(${colorPoint},70%,70%,0.8)`;
+  targetColor = `hsla(${colorPoint},100%,70%,0.4)`;
 }
 
 function isTarget(i, j) {
@@ -103,10 +105,8 @@ function isTarget(i, j) {
 function success() {
   stage++;
   stageBox.textContent = `stage : ${stage}`;
-  successCount++;
-  if (successCount === 10) {
+  if (stage % levelUpCount === 0) {
     level++;
-    successCount = 0;
   }
   next();
 }
@@ -139,27 +139,29 @@ function updateTimer() {
   timer.textContent = Math.floor(TIME);
   TIME -= 0.5;
   if (TIME < 0) {
-    clearInterval(interval);
-    end();
-    result();
+    fail();
+    if (failCount < 5) {
+      success();
+    }
   }
 }
 
 function end() {
   const target = document.querySelector('.target');
-  target.style.boxShadow = `inset 0px 0px ${20 / level}px #000000`;
+  target.style.boxShadow = `inset 0px 0px ${20 / level + 2}px #000000`;
   cover.style.zIndex = '10';
 }
 
 function result() {
   let result = '';
-  if (stage >= 100) result = '당신은 혹시.. 신입니까?';
-  else if (stage >= 80) result = '당신의 감각은 인류의 자랑입니다.';
-  else if (stage >= 70) result = '당신의 어쩌면.. 맹금류입니다.';
-  else if (stage >= 60) result = '당신의 야생동물적인 감각을 가지고 있습니다.';
-  else if (stage >= 45) result = '당신의 컬러감각은 미대생 수준입니다.';
-  else if (stage >= 30) result = '당신의 컬러감각은 일반적인 수준입니다.';
-  else if (stage >= 10) result = '당신은 초보수준 컬러감각을 가지고 있습니다.';
+  if (stage >= levelUpCount * 15) result = '내 사이트를 해킹하지 마십시오.';
+  else if (stage >= levelUpCount * 10) result = '당신은 혹시.. 신입니까?';
+  else if (stage >= levelUpCount * 9) result = '당신의 감각은 인류의 자랑거리입니다.';
+  else if (stage >= levelUpCount * 8) result = '당신의 어쩌면.. 맹금류입니다.';
+  else if (stage >= levelUpCount * 6) result = '당신의 야생동물적인 감각을 가지고 있습니다.';
+  else if (stage >= levelUpCount * 4) result = '당신의 컬러감각은 미대생 수준입니다.';
+  else if (stage >= levelUpCount * 2) result = '당신의 컬러감각은 일반적인 수준입니다.';
+  else if (stage >= levelUpCount) result = '당신은 초보수준 컬러감각을 가지고 있습니다.';
   else result = '음.. 조금만 제대로 플레이 해보시겠습니까?';
 
   resultBox.innerHTML = `최종 스테이지 : ${stage}<br>
@@ -173,7 +175,6 @@ function restart() {
   TIME = MAX_TIME;
   stage = 1;
   level = 1;
-  successCount = 0;
   failCount = 0;
   colorPoint = 0;
   baseColor = '';

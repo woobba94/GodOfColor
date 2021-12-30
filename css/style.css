@@ -1,21 +1,40 @@
 .start {
-  position: absolute;
-  top: 40%;
-  width: 200px;
-  height: 200px;
+  margin: 5px;
+  width: 210px;
+  height: 210px;
   background-color: rgb(64, 70, 109);
-  border-radius: 20px;
+  border-radius: 5%;
   font-size: 28px;
   font-weight: 700;
   cursor: pointer;
   transition: 0.3s box-shadow;
-  left: 50%;
-  transform: translateX(-50%);
+
   color: rgb(167, 167, 167);
 }
 
 .start:hover {
   box-shadow: inset 0px 0px 30px rgb(26, 26, 26);
+}
+
+.start-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  height: 50vh;
+  width: 50vh;
+  transform: translate(-50.1%, -49.3%);
+}
+
+.temp-box {
+  margin: 5px;
+  border-radius: 5%;
+  width: 210px;
+  height: 210px;
+  background-color: rgb(64, 83, 109);
+  cursor: pointer;
 }
 
 .cover {
