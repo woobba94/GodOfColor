@@ -93,7 +93,7 @@ function setTarget() {
   targetIndex.y = Math.floor(Math.random() * (level + 1));
   // 타겟 컬러 설정
   // 가중치 k 에 따라 baseColor 와의 차이 조절
-  let k = 10 / level - 10;
+  let k = 75 / level + 3;
   if (colorPoint - k < 0) colorPoint += k;
   else colorPoint -= k;
   targetColor = `hsla(${colorPoint},100%,70%,0.4)`;
