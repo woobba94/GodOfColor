@@ -68,7 +68,7 @@ HTML | CSS | JavaScript
 - 난이도 관련 가중치를 조정하고 stage에 따라 level이 더 빠르게 오르도록 수정하여 난이도 조절 피드백 수용
   - 기존 7 : 1 에서 5 : 1 로 수정
   ```javascript
-  // 레벨이 올라가는 스테이지 단위
-  // 5 stage 마다 level++
-  const levelUpCount = 5;
+    // 레벨이 올라가는 스테이지 단위
+    // 5 stage 마다 level++
+    const levelUpCount = 5;
   ```
